@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacto - OpticaSee</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="icon" href="logo.png">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      color: #333;
+      background-color: #f8f9fa;
+    }
+    .navbar {
+      background-color: rgba(31, 41, 55, 0.9) !important;
+      backdrop-filter: blur(5px);
+    }
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+    }
+    .navbar-brand img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .hero-section {
+      background: url('https://images.unsplash.com/photo-1508780709619-79562169bc64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1950&q=80') no-repeat center center;
+      background-size: cover;
+      padding: 5rem 0;
+      position: relative;
+    }
+    .hero-overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 4rem 0;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .btn-gradient {
+      background: linear-gradient(135deg, #fbbf24, #f97316);
+      color: white;
+      border: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .btn-gradient:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    .card {
+      transition: transform 0.3s ease;
+      border: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .card:hover {
+      transform: translateY(-10px);
+    }
+    .footer {
+      background: linear-gradient(135deg, #1f2937, #6366f1);
+      color: white;
+      padding: 3rem 0;
+    }
+    .text-shadow {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    .content-section {
+      padding: 4rem 0;
+    }
+    .contact-form {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .contact-info {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      height: 100%;
+    }
+    .contact-icon {
+      font-size: 2rem;
+      color: #6366f1;
+      margin-bottom: 1rem;
+    }
+    .cart-icon {
+      position: relative;
+    }
+    .cart-count {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: #f97316;
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+  
+@media (max-width: 767.98px) {
+  .navbar-collapse {
+    background-color: rgba(31, 41, 55, 0.95);
+    padding: 1rem;
+    border-radius: 10px;
+  }
+  .cart-icon {
+    margin-right: 10px;
+  }
+  .contact-form, .contact-info {
+    margin-bottom: 2rem;
+  }
+}
+
+</style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-3" href="index.html">
+        <img src="logo.png" alt="OpticaSee Logo" width="40">
+        OpticaSee
+      </a>
+      <div class="d-flex align-items-center">
+        <a href="cart.html" class="text-white me-4 cart-icon">
+          <i class="fas fa-shopping-cart fs-4"></i>
+          <span class="cart-count">0</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="glasses.html">Gafas</a></li>
+          <li class="nav-item"><a class="nav-link" href="shop.html">Tienda</a></li>
+          <li class="nav-item"><a class="nav-link active" href="contact.html">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-overlay">
+      <div class="container text-center text-white">
+        <h1 class="display-3 fw-bold text-shadow mb-4">Contáctanos</h1>
+        <p class="lead text-shadow">Estamos aquí para responder todas tus preguntas</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Content -->
+  <section class="content-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <div class="contact-form">
+            <h2 class="fw-bold gradient-text mb-4">Envía un mensaje</h2>
+            <form>
+              <div class="mb-3">
+                <label for="name" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="name" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Correo electrónico</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="phone" class="form-label">Teléfono</label>
+                <input type="tel" class="form-control" id="phone">
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label">Mensaje</label>
+                <textarea class="form-control" id="message" rows="5" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-gradient w-100">Enviar mensaje</button>
+            </form>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="contact-info">
+            <h2 class="fw-bold gradient-text mb-4">Información de contacto</h2>
+            <div class="mb-4">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <h4>Dirección</h4>
+              <p>Calle 13 Casa 15 Manzana D La Arboleda</p>
+            </div>
+            <div class="mb-4">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <h4>Teléfono</h4>
+              <p>+57 315 5978536</p>
+            </div>
+            <div class="mb-4">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <h4>Correo electrónico</h4>
+              <p>camiloguitierrezopti@gmail.com</p>
+            </div>
+            <div class="mb-4">
+              <div class="contact-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <h4>Horario de atención</h4>
+              <p>Lunes a Viernes: 9am - 7pm<br>
+              Sábados: 10am - 5pm<br>
+              Domingos: Cerrado</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4 mb-md-0">
+          <h5 class="mb-3">OpticaSee</h5>
+          <p>Tu tienda de confianza para gafas de sol con estilo y protección UV.</p>
+          <div class="mt-3">
+            <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 mb-md-0">
+          <h5 class="mb-3">Contacto</h5>
+          <p><i class="fas fa-map-marker-alt me-2"></i>Calle 13 Casa 15 Manzana D La Arboleda</p>
+          <p><i class="fas fa-phone me-2"></i>+57 315 5978536</p>
+          <p><i class="fas fa-envelope me-2"></i>camiloguitierrezopti@gmail.com</p>
+        </div>
+        <div class="col-md-4">
+          <h5 class="mb-3">Horario</h5>
+          <p>Lunes a Viernes: 9am - 7pm</p>
+          <p>Sábados: 10am - 5pm</p>
+          <p>Domingos: Cerrado</p>
+        </div>
+      </div>
+      <hr class="my-4">
+      <div class="text-center">
+        <p class="mb-0">&copy; 2024 OpticaSee. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Carrito funcionalidad básica
+    document.addEventListener('DOMContentLoaded', function() {
+      // Cargar carrito desde localStorage
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      updateCartCount(cart.length);
+      
+      // Actualizar contador del carrito
+      function updateCartCount(count) {
+        document.querySelector('.cart-count').textContent = count;
+      }
+    });
+  </script>
+</body>
+</html>

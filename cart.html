@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carrito - OpticaSee</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      color: #333;
+      background-color: #f8f9fa;
+    }
+    .navbar {
+      background-color: rgba(31, 41, 55, 0.9) !important;
+      backdrop-filter: blur(5px);
+    }
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+    }
+    .navbar-brand img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .hero-section {
+      background: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center;
+      background-size: cover;
+      padding: 5rem 0;
+      position: relative;
+    }
+    .hero-overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 4rem 0;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .btn-gradient {
+      background: linear-gradient(135deg, #fbbf24, #f97316);
+      color: white;
+      border: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .btn-gradient:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    .footer {
+      background: linear-gradient(135deg, #1f2937, #6366f1);
+      color: white;
+      padding: 3rem 0;
+    }
+    .text-shadow {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    .content-section {
+      padding: 4rem 0;
+    }
+    .cart-item-img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    .cart-icon {
+      position: relative;
+    }
+    .cart-count {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: #f97316;
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-3" href="index.html">
+        <img src="https://cdn-icons-png.flaticon.com/512/2779/2779775.png" alt="OpticaSee Logo" width="40">
+        OpticaSee
+      </a>
+      <div class="d-flex align-items-center">
+        <a href="cart.html" class="text-white me-4 cart-icon">
+          <i class="fas fa-shopping-cart fs-4"></i>
+          <span class="cart-count" id="cartCountNav">0</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="glasses.html">Gafas</a></li>
+          <li class="nav-item"><a class="nav-link" href="shop.html">Tienda</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero-section">
+    <div class="hero-overlay">
+      <div class="container text-center text-white">
+        <h1 class="display-3 fw-bold text-shadow mb-4">Tu Carrito</h1>
+        <p class="lead text-shadow">Revisa y completa tu compra</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h4 class="card-title gradient-text">Productos seleccionados</h4>
+              <div id="cartItemsContainer">
+                <div class="text-center py-5">
+                  <i class="fas fa-shopping-cart fa-3x text-muted mb-3"></i>
+                  <p class="text-muted">Tu carrito está vacío</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title gradient-text">Resumen de compra</h4>
+              <div class="d-flex justify-content-between mb-2">
+                <span>Subtotal:</span>
+                <span id="subtotal">$0 COP</span>
+              </div>
+              <div class="d-flex justify-content-between mb-2">
+                <span>Envío:</span>
+                <span id="shipping">$10.000 COP</span>
+              </div>
+              <hr>
+              <div class="d-flex justify-content-between fw-bold fs-5">
+                <span>Total:</span>
+                <span id="total">$10.000 COP</span>
+              </div>
+              <button class="btn btn-gradient w-100 mt-3" id="checkoutBtn">Proceder al pago</button>
+              <a href="shop.html" class="btn btn-outline-secondary w-100 mt-2">Seguir comprando</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4 mb-md-0">
+          <h5 class="mb-3">OpticaSee</h5>
+          <p>Tu tienda de confianza para gafas de sol con estilo y protección UV.</p>
+          <div class="mt-3">
+            <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 mb-md-0">
+          <h5 class="mb-3">Contacto</h5>
+          <p><i class="fas fa-map-marker-alt me-2"></i>Calle 13 Casa 15 Manzana D La Arboleda</p>
+          <p><i class="fas fa-phone me-2"></i>+57 315 5978536</p>
+          <p><i class="fas fa-envelope me-2"></i>camiloguitierrezopti@gmail.com</p>
+        </div>
+        <div class="col-md-4">
+          <h5 class="mb-3">Horario</h5>
+          <p>Lunes a Viernes: 9am - 7pm</p>
+          <p>Sábados: 10am - 5pm</p>
+          <p>Domingos: Cerrado</p>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        &copy; 2025 OpticaSee. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    let cart = [];
+
+    // Cargar carrito desde localStorage al iniciar
+    function loadCart() {
+      const storedCart = localStorage.getItem('cart');
+      if (storedCart) {
+        try {
+          cart = JSON.parse(storedCart).map(item => {
+            // Convertir precio a número si es necesario
+            const price = typeof item.price === 'string' 
+              ? parseFloat(item.price.replace(/[^\d]/g, '')) 
+              : item.price;
+            
+            return {
+              id: item.id,
+              name: item.name,
+              price: price,
+              quantity: parseInt(item.quantity) || 1,
+              image: item.image
+            };
+          });
+        } catch (e) {
+          console.error("Error parsing cart:", e);
+          cart = [];
+        }
+      } else {
+        cart = [];
+      }
+    }
+
+    // Guardar carrito en localStorage
+    function saveCart() {
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+      updateCartDisplay();
+    }
+
+    // Actualizar contador del carrito en navbar
+    function updateCartCount() {
+      const count = cart.reduce((acc, item) => acc + item.quantity, 0);
+      document.getElementById('cartCountNav').textContent = count;
+    }
+
+    // Mostrar productos del carrito en la página
+    function updateCartDisplay() {
+      const container = document.getElementById('cartItemsContainer');
+      container.innerHTML = '';
+
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-5">
+            <i class="fas fa-shopping-cart fa-3x text-muted mb-3"></i>
+            <p class="text-muted">Tu carrito está vacío</p>
+          </div>
+        `;
+        updateTotals();
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        const productDiv = document.createElement('div');
+        productDiv.className = 'd-flex align-items-center mb-3';
+
+        productDiv.innerHTML = `
+          <img src="${item.image}" alt="${item.name}" class="cart-item-img me-3" />
+          <div class="flex-grow-1">
+            <h5>${item.name}</h5>
+            <p class="mb-1">Precio: $${item.price.toLocaleString('es-CO')} COP</p>
+            <div class="input-group" style="max-width: 120px;">
+              <button class="btn btn-outline-secondary btn-sm" type="button" onclick="decrementQuantity(${index})">-</button>
+              <input type="text" class="form-control form-control-sm text-center" value="${item.quantity}" readonly>
+              <button class="btn btn-outline-secondary btn-sm" type="button" onclick="incrementQuantity(${index})">+</button>
+            </div>
+          </div>
+          <button class="btn btn-danger btn-sm ms-3" onclick="removeProduct(${index})" title="Eliminar producto">
+            <i class="fas fa-trash"></i>
+          </button>
+        `;
+
+        container.appendChild(productDiv);
+      });
+
+      updateTotals();
+    }
+
+    // Actualizar totales de compra
+    function updateTotals() {
+      const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+      const shipping = cart.length > 0 ? 10000 : 0; // Envío fijo $10,000 si hay productos
+      const total = subtotal + shipping;
+
+      document.getElementById('subtotal').textContent = `$${subtotal.toLocaleString('es-CO')} COP`;
+      document.getElementById('shipping').textContent = `$${shipping.toLocaleString('es-CO')} COP`;
+      document.getElementById('total').textContent = `$${total.toLocaleString('es-CO')} COP`;
+    }
+
+    // Incrementar cantidad de un producto
+    function incrementQuantity(index) {
+      cart[index].quantity++;
+      saveCart();
+    }
+
+    // Disminuir cantidad de un producto (mínimo 1)
+    function decrementQuantity(index) {
+      if (cart[index].quantity > 1) {
+        cart[index].quantity--;
+        saveCart();
+      }
+    }
+
+    // Eliminar producto del carrito
+    function removeProduct(index) {
+      if (confirm(`¿Eliminar ${cart[index].name} del carrito?`)) {
+        cart.splice(index, 1);
+        saveCart();
+      }
+    }
+
+    // Función para agregar un producto al carrito (con control de cantidad y suma)
+    // Nota: Esta función es útil si necesitas añadir productos desde otras páginas o para pruebas.
+    // En este archivo 'cart.html', los productos ya están en el localStorage.
+    function addProductToCart(product) {
+      const parsedPrice = parseFloat(product.price);
+      const parsedQuantity = parseInt(product.quantity);
+
+      if (isNaN(parsedPrice) || isNaN(parsedQuantity)) {
+        console.error('Error: Price or quantity is not a valid number for product:', product);
+        return;
+      }
+
+      const existingIndex = cart.findIndex(item => item.id === product.id);
+      if (existingIndex !== -1) {
+        cart[existingIndex].quantity += parsedQuantity;
+      } else {
+        cart.push({
+          id: product.id,
+          name: product.name,
+          price: parsedPrice,
+          quantity: parsedQuantity,
+          image: product.image
+        });
+      }
+      saveCart();
+    }
+
+    // Función para probar agregando un producto fijo (puedes llamar addTestProduct() en consola)
+    function addTestProduct() {
+      const testProduct = {
+        id: "test-123", // Usar un ID único para evitar conflictos con productos existentes
+        name: 'Gafas de Sol de Prueba',
+        price: 99000, 
+        quantity: 1, 
+        image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
+      };
+      addProductToCart(testProduct);
+      alert('Producto de prueba añadido al carrito');
+    }
+
+    // Proceder al pago: alerta, limpiar carrito, actualizar vista
+    function checkout() {
+      if (cart.length === 0) {
+        alert('El carrito está vacío. Agrega productos antes de pagar.');
+        return;
+      }
+      alert('¡Gracias por tu compra en OpticaSee! Te hemos redirigido a la página principal.');
+      cart = [];
+      saveCart();
+      window.location.href = "index.html"; // Redirigir a la página principal
+    }
+
+    // Event listener para el botón de checkout
+    document.getElementById('checkoutBtn').addEventListener('click', checkout);
+
+    // Inicializar carrito y vista al cargar la página
+    loadCart();
+    updateCartCount();
+    updateCartDisplay();
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

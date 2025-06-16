@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gafas - OpticaSee</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="icon" href="logo.png">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      color: #333;
+      background-color: #f8f9fa;
+    }
+    .navbar {
+      background-color: rgba(31, 41, 55, 0.9) !important;
+      backdrop-filter: blur(5px);
+    }
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+    }
+    .navbar-brand img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .hero-section {
+      background: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center;
+      background-size: cover;
+      padding: 5rem 0;
+      position: relative;
+    }
+    .hero-overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 4rem 0;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .btn-gradient {
+      background: linear-gradient(135deg, #fbbf24, #f97316);
+      color: white;
+      border: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .btn-gradient:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    .card {
+      transition: transform 0.3s ease;
+      border: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      height: 100%;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+    }
+    .card-img-top {
+      height: 250px;
+      object-fit: cover;
+    }
+    .footer {
+      background: linear-gradient(135deg, #1f2937, #6366f1);
+      color: white;
+      padding: 3rem 0;
+    }
+    .text-shadow {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    .content-section {
+      padding: 4rem 0;
+    }
+    .filter-section {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+    .modal-img {
+      max-height: 80vh;
+      width: auto;
+    }
+    .cart-icon {
+      position: relative;
+    }
+    .cart-count {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: #f97316;
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+    .page-item.disabled .page-link {
+      background-color: #e9ecef;
+      color: #6c757d;
+      cursor: not-allowed;
+    }
+    .page-item.active .page-link {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      border-color: #6366f1;
+    }
+    .page-link {
+      transition: all 0.3s ease;
+    }
+    .page-link:hover {
+      transform: translateY(-2px);
+    }
+    .hidden {
+      display: none !important;
+    }
+    .product-card {
+      display: flex;
+      flex-direction: column;
+    }
+    .card-body {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-text {
+      flex-grow: 1;
+    }
+    .btn-container {
+      margin-top: auto;
+    }
+  
+@media (max-width: 767.98px) {
+  .product-card {
+    display: block !important;
+  }
+  .hidden {
+    display: block !important;
+    visibility: visible !important;
+  }
+}
+
+</style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-3" href="index.html">
+        <img src="logo.png" alt="OpticaSee Logo" width="40">
+        OpticaSee
+      </a>
+      <div class="d-flex align-items-center">
+        <a href="cart.html" class="text-white me-4 cart-icon">
+          <i class="fas fa-shopping-cart fs-4"></i>
+          <span class="cart-count">0</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link active" href="glasses.html">Gafas</a></li>
+          <li class="nav-item"><a class="nav-link" href="shop.html">Tienda</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero-section">
+    <div class="hero-overlay">
+      <div class="container text-center text-white">
+        <h1 class="display-3 fw-bold text-shadow mb-4">Nuestra Colección</h1>
+        <p class="lead text-shadow">Descubre gafas que se adaptan a tu estilo de vida</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+      <div class="filter-section">
+        <div class="row">
+          <div class="col-md-3 mb-3">
+            <label for="category" class="form-label">Categoría</label>
+            <select class="form-select" id="category">
+              <option selected value="Todas">Todas</option>
+              <option value="Aviador">Aviador</option>
+              <option value="Redondas">Redondas</option>
+              <option value="Cuadradas">Cuadradas</option>
+              <option value="Deportivas">Deportivas</option>
+            </select>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="price" class="form-label">Precio</label>
+            <select class="form-select" id="price">
+              <option selected value="Todos">Todos</option>
+              <option value="Menos de $150.000">Menos de $150.000</option>
+              <option value="$150.000 - $250.000">$150.000 - $250.000</option>
+              <option value="Más de $250.000">Más de $250.000</option>
+            </select>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="color" class="form-label">Color</label>
+            <select class="form-select" id="color">
+              <option selected value="Todos">Todos</option>
+              <option value="Negro">Negro</option>
+              <option value="Marrón">Marrón</option>
+              <option value="Azul">Azul</option>
+              <option value="Rojo">Rojo</option>
+            </select>
+          </div>
+          <div class="col-md-3 mb-3 d-flex align-items-end">
+            <button class="btn btn-gradient w-100" id="filterButton">Filtrar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="productsContainer">
+        <!-- Producto 1 -->
+        <div class="col-lg-3 col-md-6 product-card" data-id="1" data-category="Aviador" data-price="180000" data-color="Negro">
+          <div class="card">
+            <img src="AviadorClasico.jfif" 
+                 class="card-img-top" 
+                 alt="Aviador Clásico"
+                 data-bs-toggle="modal" 
+                 data-bs-target="#imageModal" 
+                 data-bs-img="AviadorClasico.jfif">
+            <div class="card-body">
+              <h5 class="card-title">Aviador Clásico</h5>
+              <p class="text-muted">$180.000 COP</p>
+              <p class="text-muted small">Publicado el 10 de junio de 2025</p>
+              <p class="card-text">Gafas de sol con protección UV400 y montura metálica ligera.</p>
+              <div class="btn-container">
+                <button class="btn btn-gradient w-100 add-to-cart">
+                  <i class="fas fa-shopping-cart me-2"></i>Agregar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 2 -->
+        <div class="col-lg-3 col-md-6 product-card" data-id="2" data-category="Cuadradas" data-price="210000" data-color="Negro">
+          <div class="card">
+            <img src="Urban.jpg" 
+                 class="card-img-top" 
+                 alt="Urban Black"
+                 data-bs-toggle="modal" 
+                 data-bs-target="#imageModal" 
+                 data-bs-img="Urban.jpg">
+            <div class="card-body">
+              <h5 class="card-title">Urban Black</h5>
+              <p class="text-muted">$210.000 COP</p>
+              <p class="text-muted small">Publicado el 10 de junio de 2025</p>
+              <p class="card-text">Estilo moderno con lentes polarizados y montura de acetato.</p>
+              <div class="btn-container">
+                <button class="btn btn-gradient w-100 add-to-cart">
+                  <i class="fas fa-shopping-cart me-2"></i>Agregar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 3 -->
+        <div class="col-lg-3 col-md-6 product-card" data-id="3" data-category="Redondas" data-price="165000" data-color="Marrón">
+          <div class="card">
+            <img src="RetroCafe.jfif" class="card-img-top" alt="Retro Café" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-img="RetroCafe.jfif">
+            <div class="card-body">
+              <h5 class="card-title">Retro Café</h5>
+              <p class="text-muted">$165.000 COP</p>
+              <p class="text-muted small">Publicado el 10 de junio de 2025</p>
+              <p class="card-text">Inspiración vintage con lentes degradé y montura dorada.</p>
+              <div class="btn-container">
+                <button class="btn btn-gradient w-100 add-to-cart"><i class="fas fa-shopping-cart me-2"></i>Agregar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 4 -->
+        <div class="col-lg-3 col-md-6 product-card" data-id="4" data-category="Deportivas" data-price="190000" data-color="Negro">
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" class="card-img-top" alt="Minimalista Polarizado" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-img="https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80">
+            <div class="card-body">
+              <h5 class="card-title">Minimalista Polarizado</h5>
+              <p class="text-muted">$190.000 COP</p>
+              <p class="text-muted small">Publicado el 10 de junio de 2025</p>
+              <p class="card-text">Diseño limpio con lentes polarizados para máxima claridad.</p>
+              <div class="btn-container">
+                <button class="btn btn-gradient w-100 add-to-cart"><i class="fas fa-shopping-cart me-2"></i>Agregar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Producto 5 -->
+        <div class="col-lg-3 col-md-6 product-card" data-id="5" data-category="Aviador" data-price="220000" data-color="Azul">
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80" class="card-img-top" alt="Aviador Premium" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-img="https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80">
+            <div class="card-body">
+              <h5 class="card-title">Aviador Premium</h5>
+              <p class="text-muted">$220.000 COP</p>
+              <p class="text-muted small">Publicado el 10 de junio de 2025</p>
+              <p class="card-text">Edición especial con lentes espejados y montura de titanio.</p>
+              <div class="btn-container">
+                <button class="btn btn-gradient w-100 add-to-cart"><i class="fas fa-shopping-cart me-2"></i>Agregar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Producto 6 -->
+        <div class="col-lg-3 col-md-6 product-card" data-id="6" data-category="Redondas" data-price="175000" data-color="Marrón">
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1508296695146-257a814070b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                  class="card-img-top" 
+                  alt="Vintage Brown" 
+                  data-bs-toggle="modal" 
+                  data-bs-target="#imageModal" 
+                  data-bs-img="https://images.unsplash.com/photo-1508296695146-257a814070b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80">
+            <div class="card-body">
+              <h5 class="card-title">Vintage Brown</h5>
+              <p class="text-muted">$175.000 COP</p>
+              <p class="text-muted small">Publicado el 10 de junio de 2025</p>
+              <p class="card-text">Estilo retro con montura de acetato y lentes polarizados.</p>
+              <div class="btn-container">
+                <button class="btn btn-gradient w-100 add-to-cart"><i class="fas fa-shopping-cart me-2"></i>Agregar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Producto 7 -->
+        <div class="col-lg-3 col-md-6 product-card" data-id="7" data-category="Cuadradas" data-price="230000" data-color="Azul">
+          <div class="card">
+            <img src="MonturaZul.jfif" 
+                 class="card-img-top" 
+                 alt="Montura Azul"
+                 data-bs-toggle="modal" 
+                 data-bs-target="#imageModal" 
+                 data-bs-img="MonturaZul.jfif">
+            <div class="card-body">
+              <h5 class="card-title">Montura Azul</h5>
+              <p class="text-muted">$230.000 COP</p>
+              <p class="text-muted small">Publicado el 10 de junio de 2025</p>
+              <p class="card-text">Diseño moderno para una Montura azul.</p><p class="card-text text-muted"><em>Montura azul ideal para días soleados y estilos modernos.</em></p>
+              <div class="btn-container">
+                <button class="btn btn-gradient w-100 add-to-cart">
+                  <i class="fas fa-shopping-cart me-2"></i>Agregar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 8 -->
+        <div class="col-lg-3 col-md-6 product-card" data-id="8" data-category="Deportivas" data-price="195000" data-color="Rojo">
+          <div class="card">
+            <img src="Red.jfif" 
+                  class="card-img-top" 
+                  alt="Sport Red" 
+                  data-bs-toggle="modal" 
+                  data-bs-target="#imageModal" 
+                  data-bs-img="Red.jfif">
+            <div class="card-body">
+              <h5 class="card-title">Sport Red</h5>
+              <p class="text-muted">$195.000 COP</p>
+              <p class="text-muted small">Publicado el 10 de junio de 2025</p>
+              <p class="card-text">Gafas deportivas con lentes rojos y montura flexible.</p>
+              <div class="btn-container">
+                <button class="btn btn-gradient w-100 add-to-cart"><i class="fas fa-shopping-cart me-2"></i>Agregar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <nav aria-label="Page navigation" class="mt-5">
+        <ul class="pagination justify-content-center" id="pagination">
+          <li class="page-item disabled" id="prevPage">
+            <a class="page-link" href="#" tabindex="-1">Anterior</a>
+          </li>
+          <li class="page-item active"><a class="page-link page-number" href="#" data-page="1">1</a></li>
+          <li class="page-item"><a class="page-link page-number" href="#" data-page="2">2</a></li>
+          <li class="page-item" id="nextPage">
+            <a class="page-link" href="#" data-page="2">Siguiente</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-body text-center">
+          <img src="" class="modal-img img-fluid" id="modalImage" alt="Product image">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4 mb-md-0">
+          <h5 class="mb-3">OpticaSee</h5>
+          <p>Tu tienda de confianza para gafas de sol con estilo y protección UV.</p>
+          <div class="mt-3">
+            <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 mb-md-0">
+          <h5 class="mb-3">Contacto</h5>
+          <p><i class="fas fa-map-marker-alt me-2"></i>Calle 13 Casa 15 Manzana D La Arboleda</p>
+          <p><i class="fas fa-phone me-2"></i>+57 315 5978536</p>
+          <p><i class="fas fa-envelope me-2"></i>camiloguitierrezopti@gmail.com</p>
+        </div>
+        <div class="col-md-4">
+          <h5 class="mb-3">Horario</h5>
+          <p>Lunes a Viernes: 8am - 6pm</p>
+          <p>Sábados: 10am - 2pm</p>
+          <p>Domingos: Cerrado</p>
+        </div>
+      </div>
+      <hr class="my-4">
+      <div class="text-center">
+        <p class="mb-0">&copy; 2025 OpticaSee. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Variables para paginación
+      const productsPerPage = 4;
+      let currentPage = 1;
+      const productCards = document.querySelectorAll('.product-card');
+      const totalProducts = productCards.length;
+      const totalPages = Math.ceil(totalProducts / productsPerPage);
+      
+      // Inicializar carrito
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      updateCartCount(cart.reduce((acc, item) => acc + item.quantity, 0));
+      
+      // Funciones para actualizar el carrito
+      function updateCartCount(count) {
+        document.querySelector('.cart-count').textContent = count;
+      }
+      
+      function addToCart(product) {
+        const existingItem = cart.find(item => item.id === product.id);
+        
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({ 
+            ...product,
+            quantity: 1
+          });
+        }
+        
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount(cart.reduce((acc, item) => acc + item.quantity, 0));
+      }
+      
+      // Eventos para agregar al carrito
+      document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', function() {
+          const card = this.closest('.card');
+          const productCard = this.closest('.product-card');
+          
+          const product = {
+            id: productCard.dataset.id,
+            name: card.querySelector('.card-title').textContent,
+            price: parseFloat(productCard.dataset.price),
+            image: card.querySelector('img').src
+          };
+          
+          addToCart(product);
+          
+          // Feedback visual
+          this.innerHTML = '<i class="fas fa-check me-2"></i>Agregado';
+          this.classList.add('btn-success');
+          setTimeout(() => {
+            this.innerHTML = '<i class="fas fa-shopping-cart me-2"></i>Agregar';
+            this.classList.remove('btn-success');
+          }, 2000);
+        });
+      });
+      
+      // Image modal functionality
+      const imageModal = document.getElementById('imageModal');
+      if (imageModal) {
+        imageModal.addEventListener('show.bs.modal', function(event) {
+          const button = event.relatedTarget;
+          const imgSrc = button.getAttribute('data-bs-img');
+          const modalImage = document.getElementById('modalImage');
+          modalImage.src = imgSrc;
+        });
+      }
+      
+      // Funcionalidad de filtrado
+      document.getElementById('filterButton').addEventListener('click', function() {
+        const category = document.getElementById('category').value;
+        const price = document.getElementById('price').value;
+        const color = document.getElementById('color').value;
+        
+        // Filtrar productos
+        productCards.forEach(card => {
+          const cardCategory = card.getAttribute('data-category');
+          const cardPrice = parseInt(card.getAttribute('data-price'));
+          const cardColor = card.getAttribute('data-color');
+          
+          let showCard = true;
+          
+          // Filtrar por categoría
+          if (category !== 'Todas' && cardCategory !== category) {
+            showCard = false;
+          }
+          
+          // Filtrar por precio
+          if (price === 'Menos de $150.000' && cardPrice >= 150000) {
+            showCard = false;
+          } else if (price === '$150.000 - $250.000' && (cardPrice < 150000 || cardPrice > 250000)) {
+            showCard = false;
+          } else if (price === 'Más de $250.000' && cardPrice <= 250000) {
+            showCard = false;
+          }
+          
+          // Filtrar por color
+          if (color !== 'Todos' && cardColor !== color) {
+            showCard = false;
+          }
+          
+          // Mostrar u ocultar tarjeta según los filtros
+          card.style.display = showCard ? '' : 'none';
+        });
+        
+        // Volver a la primera página después de filtrar
+        currentPage = 1;
+        updatePagination();
+        showPage(currentPage);
+      });
+      
+      // Funciones para paginación
+      function showPage(page) {
+        const startIndex = (page - 1) * productsPerPage;
+        const endIndex = startIndex + productsPerPage;
+        
+        productCards.forEach((card, index) => {
+          if (index >= startIndex && index < endIndex && card.style.display !== 'none') {
+            card.style.visibility = 'visible';
+          } else {
+            card.style.visibility = 'hidden';
+          }
+        });
+      }
+      
+      function updatePagination() {
+        const pageNumbers = document.querySelectorAll('.page-number');
+        const prevPage = document.getElementById('prevPage');
+        const nextPage = document.getElementById('nextPage');
+        
+        // Actualizar estado de los botones
+        prevPage.classList.toggle('disabled', currentPage === 1);
+        nextPage.classList.toggle('disabled', currentPage === totalPages);
+        
+        // Actualizar números de página activos
+        pageNumbers.forEach(number => {
+          const page = parseInt(number.getAttribute('data-page'));
+          number.parentElement.classList.toggle('active', page === currentPage);
+        });
+      }
+      
+      // Eventos de paginación
+      document.querySelectorAll('.page-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          if (this.parentElement.classList.contains('disabled')) {
+            return;
+          }
+          
+          if (this.textContent.trim() === 'Siguiente') {
+            if (currentPage < totalPages) {
+              currentPage++;
+              showPage(currentPage);
+              updatePagination();
+            }
+          } else if (this.textContent.trim() === 'Anterior') {
+            if (currentPage > 1) {
+              currentPage--;
+              showPage(currentPage);
+              updatePagination();
+            }
+          } else {
+            const page = parseInt(this.getAttribute('data-page'));
+            if (page !== currentPage) {
+              currentPage = page;
+              showPage(currentPage);
+              updatePagination();
+            }
+          }
+        });
+      });
+      
+      // Mostrar la primera página al cargar
+      showPage(currentPage);
+      updatePagination();
+    });
+  </script>
+</body>
+</html>
